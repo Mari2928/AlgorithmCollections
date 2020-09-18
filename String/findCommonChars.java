@@ -1,3 +1,10 @@
+/*
+    Find the numebr of common chars in all strings.
+    abcdde
+    baccd
+    eeabg   
+    Output: 2 (only a and b are common)
+*/
 static int gemstones(String[] arr) {
 
     ArrayList<Character> bag = new ArrayList<>();
