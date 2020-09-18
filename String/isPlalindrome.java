@@ -16,3 +16,28 @@ static boolean isPlalindrome(String s){
     if (s.equals(reverse))  return true; 
     else	return false;	      
 }
+
+
+/*
+ * Check Palindrome with stack and queue.
+ */
+static boolean checkPalindrome(String input) {
+    Stack<Character> stack = new Stack<>();
+    Queue<Character> q = new LinkedList<>();
+    char[] s = input.toCharArray();
+    // Enqueue/Push all chars to their respective data structures:
+    for (char c : s) {
+        stack.push(c);
+        q.add(c);
+    }
+
+    // Pop/Dequeue the chars at the head of both data structures and compare them:
+    boolean isPalindrome = true;
+    for (int i = 0; i < s.length/2; i++) {
+        if (stack.pop() != q.poll()) {
+            isPalindrome = false;                
+            break;
+        }
+    }
+    return isPalindrome;	        
+}
