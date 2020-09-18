@@ -1,5 +1,5 @@
 /*
-    Find the numebr of common chars in all strings.
+    Find the number of common chars in all strings.
     abcdde
     baccd
     eeabg   
