@@ -1,5 +1,7 @@
 import java.util.*;
-
+/**
+ * Grouping the nodes given by Lists and return the number of groups.
+ */
 public class Graph {    
 
     enum State { Unvisited, Visited; }
@@ -14,6 +16,28 @@ public class Graph {
         public ArrayList<Node> followers = new ArrayList<>();
         Node(String i){ this.number = i;}
     }    
+    
+    /*
+     * Create a graph and find the number of groups.
+     */
+    int grouping_(int n, int d, ArrayList<Integer> x, ArrayList<Integer> y) {
+    	Graph_ g = createGraph(n, d, x, y);
+    	int count = 0;
+    	for(int i =1; i <= n; i++) {
+    		int j = n;
+    		while(j != i) {
+    			if(isReachable(g, String.valueOf(i), String.valueOf(j))) {    			
+    				count++;
+    				if(j == n)	{
+    					return count;
+    				}
+    				else		break;
+    			}
+    			j--;
+    		}
+    	}    	
+    	return count; 
+    }
 
     /**
      * See if the node is reachable to the other node using DFS.
@@ -58,7 +82,7 @@ public class Graph {
      * [4,5] Output: 2 (there are 2 groups)
      */
     void test() {   
-      // create a graph
+        // create a graph
         int V = 5;
         int d = 3;  
         ArrayList<Integer> x = new ArrayList<>();
@@ -70,30 +94,15 @@ public class Graph {
         y.add(4);
         y.add(5);    	
         Graph_ g = createTestGraph2(V, d, x, y);
-
-      // count the numebr of groups
-        int count = 0;
-        for(int i =1; i <= V; i++) {
-            int j = V;
-            while(j != i) { // search from the end node towards the start node
-                if(isReachable(g, String.valueOf(i), String.valueOf(j))) {  
-                    count++;
-                    if(j == V)	{
-                        System.out.println("answer: "+ count );
-                        return;
-                    }
-                    else		break;
-                }
-                j--;
-            }
-        }    	
+        // find the number of groups
+    	int count = grouping_( V,  d,  x, y);    	  
         System.out.println("answer: "+ count );   	
     }
 
     /*
     * Create a graph with List parameters.
     */
-    Graph_ createTestGraph2(int n, int d, ArrayList<Integer> x, ArrayList<Integer> y) {    	
+    Graph_ createGraph(int n, int d, ArrayList<Integer> x, ArrayList<Integer> y) {    	
         if(n == 0)	return null;
         Graph_ g = new Graph_(n);  
         g.nodes = new Node[n];
