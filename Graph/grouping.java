@@ -25,13 +25,11 @@ public class Graph {
         int count = 0;
         for(int i =1; i <= n; i++) {
             int j = n;
-            while(j != i) {
+            while(j != i) { // search from the end node towards the start node
                 if(isReachable(g, String.valueOf(i), String.valueOf(j))) {    			
                     count++;
-                    if(j == n)	{
-                        return count;
-                    }
-                    else		break;
+                    if(j == n)  return count;
+                    else        break;
                 }
                 j--;
             }
