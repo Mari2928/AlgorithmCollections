@@ -1,7 +1,7 @@
 import java.util.*;
 /**
- * Grouping the nodes given by Lists and return the number of groups.
- */
+* Grouping the nodes given by Lists and return the number of groups.
+*/
 public class Graph {    
 
     enum State { Unvisited, Visited; }
@@ -16,27 +16,27 @@ public class Graph {
         public ArrayList<Node> followers = new ArrayList<>();
         Node(String i){ this.number = i;}
     }    
-    
+
     /*
      * Create a graph and find the number of groups.
      */
     int grouping_(int n, int d, ArrayList<Integer> x, ArrayList<Integer> y) {
-    	Graph_ g = createGraph(n, d, x, y);
-    	int count = 0;
-    	for(int i =1; i <= n; i++) {
-    		int j = n;
-    		while(j != i) {
-    			if(isReachable(g, String.valueOf(i), String.valueOf(j))) {    			
-    				count++;
-    				if(j == n)	{
-    					return count;
-    				}
-    				else		break;
-    			}
-    			j--;
-    		}
-    	}    	
-    	return count; 
+        Graph_ g = createGraph(n, d, x, y);
+        int count = 0;
+        for(int i =1; i <= n; i++) {
+            int j = n;
+            while(j != i) {
+                if(isReachable(g, String.valueOf(i), String.valueOf(j))) {    			
+                    count++;
+                    if(j == n)	{
+                        return count;
+                    }
+                    else		break;
+                }
+                j--;
+            }
+        }    	
+        return count; 
     }
 
     /**
@@ -44,26 +44,26 @@ public class Graph {
      */
     boolean found = false;
     boolean isReachable(Graph_ g, String yourName, String herName) {
-    	for(Node u : g.nodes)	// reset the states
-    		u.state = State.Unvisited;    	
-    	isReachable2(g, yourName, herName);
-    	return found;
+        for(Node u : g.nodes)	// reset the states
+            u.state = State.Unvisited;    	
+        isReachable2(g, yourName, herName);
+        return found;
     }    
-    
+
     void isReachable2(Graph_ g, String yourName, String herName) {   	
-    	Node root = findNodeInNumber(yourName, g);
-    	if(root == null)	return;
-    	
-    	// base case of recursion
-    	if(root.number.equals(herName)) {
-    		found = true;
-    		return;
-    	}    	 
-    	root.state = State.Visited;    	    	
-    	for(Node v : root.followers) {
-    		if(v.state == State.Unvisited) 
-    			isReachable2(g, v.number, herName);   			
-    	} 
+        Node root = findNodeInNumber(yourName, g);
+        if(root == null)	return;
+
+        // base case of recursion
+        if(root.number.equals(herName)) {
+            found = true;
+            return;
+        }    	 
+        root.state = State.Visited;    	    	
+        for(Node v : root.followers) {
+            if(v.state == State.Unvisited) 
+                isReachable2(g, v.number, herName);   			
+        } 
     }
 
     /**
@@ -95,7 +95,7 @@ public class Graph {
         y.add(5);    	
         Graph_ g = createTestGraph2(V, d, x, y);
         // find the number of groups
-    	int count = grouping_( V,  d,  x, y);    	  
+        int count = grouping_( V,  d,  x, y);    	  
         System.out.println("answer: "+ count );   	
     }
 
