@@ -3,7 +3,8 @@
     5 3 -> number of nodes, number of edges
     [0 1]
     [2 3]
-    [0 4]   Output: 6 -> [0,2],[0,3][1,2],[1,3],[4,2],[4,3]
+    [0 4]   
+    Output: 6 -> [0,2],[0,3][1,2],[1,3],[4,2],[4,3]
 */
 
 static boolean[] visited;
