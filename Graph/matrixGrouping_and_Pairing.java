@@ -1,6 +1,6 @@
 /*
     Grouping nodes and compute the number of combination of a pair of 2.
-    5 3 -> number of nodes, number of edges
+    5 3 -> total number of nodes, number of edges
     [0 1]
     [2 3]
     [0 4]   
@@ -14,7 +14,7 @@ static long journeyToMoon(int n, int[][] astronaut){
 
     ArrayList<ArrayList<Integer>> all = new ArrayList<>();
     visited = new boolean[n];
-    int countN = 0;
+    int countN = 0; // the number of nodes actually in the graph
     
     // create a matrix graph
     int[][] g = new int[n][n];
@@ -31,7 +31,7 @@ static long journeyToMoon(int n, int[][] astronaut){
             path.clear();
             DFS(i, g);                
             countN += path.size();
-            all.add((ArrayList<Integer>)path.clone());
+            all.add((ArrayList<Integer>)path.clone()); // make a copy of ArrayList
         }
     }
     
@@ -47,11 +47,15 @@ static long journeyToMoon(int n, int[][] astronaut){
     return count; 
 }
 
+/*
+    DFS to create a sub-tree list
+*/
+
 static void DFS(int root, int[][] g){
     path.add(root);
     visited[root] = true;
     for(int i = 0; i <g.length; i++){
-        if(g[root][i] == 1 && visited[i] == false){
+        if(g[root][i] == 1 && visited[i] == false){ // if there is an edge and unvisited
             DFS(i, g);
         }
     }
