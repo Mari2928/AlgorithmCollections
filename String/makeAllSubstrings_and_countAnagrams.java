@@ -1,4 +1,6 @@
-
+/* 
+    Count anagrams in all the list of substrings: abba -> 4 
+*/
 static int sherlockAndAnagrams(String s) {
     ArrayList<String> anagL = new ArrayList<>(); 
     int subLen = 1;
@@ -17,7 +19,9 @@ static int sherlockAndAnagrams(String s) {
     return count;
 }
 
-/* Count anagrams in a list */
+/* 
+    Count anagrams in a list: [ab,bb,ba] -> 2
+*/
 static int countAnagram(ArrayList<String> L){
     int count = 0;
     for(int i = 0; i < L.size(); i++){
@@ -28,7 +32,9 @@ static int countAnagram(ArrayList<String> L){
     return count;       
 }
 
-/* Check if strings are anagrams */
+/*
+    Check if strings are anagrams: ab, ba -> true
+*/
 static boolean areAnagrams(String a, String b) {
     char[] a1 = a.toCharArray();
     char[] b1 = b.toCharArray();
