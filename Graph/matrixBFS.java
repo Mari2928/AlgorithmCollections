@@ -4,7 +4,7 @@ import java.util.*;
 public class Solution {
 
     public static void main(String[] args) {
-        /* Shortest path from a start node.
+        /* Find shortest distances from a start node by updating dist[]
             
             Input:
             2   -> q: number of queries
@@ -67,7 +67,7 @@ public class Solution {
                 if(g[t][i]==1 && !visited[i]){
                     q.add(i);
                     visited[i] = true;
-                    dist[i] = dist[t]+6;
+                    dist[i] = dist[t]+6;    // update distance
                 }
             }
             q.remove();
