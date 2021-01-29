@@ -42,6 +42,7 @@ public class Main {
 		//System.out.println(result);
 		return result;
 	}
+    
 
 	/* Generate permutation in String */
 	static void permutation(String q, String ans, long k) {
