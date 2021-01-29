@@ -1,13 +1,13 @@
 import java.util.*;
-/*
-    n個の都市があります。都市1を出発し、全ての都市をちょうど1度ずつ訪問してから都市1に戻るような経路のうち、移動時間の合計がちょうどKになるようなものはいくつありますか？
-    4 330 -> N, K
-    0 1 10 100 -> distance from city1 to city4 = 100
-    1 0 20 200
-    10 20 0 300
-    100 200 300 0
-    Output: 2
-*/
+	/*
+	n個の都市があります。都市1を出発し、全ての都市をちょうど1度ずつ訪問してから都市1に戻るような経路のうち、移動時間の合計がちょうどKになるようなものはいくつありますか？
+	4 330 -> N, K
+	0 1 10 100 -> distance from city1 to city4 = 100
+	1 0 20 200
+	10 20 0 300
+	100 200 300 0
+	Output: 2
+	*/
 public class Main {
 
 	public static void main(String[] args) {
@@ -30,8 +30,8 @@ public class Main {
 	}	
 	static long[][] t;
 	static int count;
-    
-    /* Calculate distance */
+
+	/* Calculate distance */
 	static long calc(String s) {
 		long result = 0L;
 		for(int i = 1; i < s.length(); i++) {
@@ -42,8 +42,8 @@ public class Main {
 		//System.out.println(result);
 		return result;
 	}
-    
-    /* Generate permutation in String */
+
+	/* Generate permutation in String */
 	static void permutation(String q, String ans, long k) {
 		if(q.length() <= 1) {
 			String s = "1"+ ans + q + "1"; // "12341"
