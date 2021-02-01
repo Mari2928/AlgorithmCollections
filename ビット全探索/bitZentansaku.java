@@ -28,7 +28,7 @@ public static void main(String[] args) {
         c[i] = sc.nextInt() - 1;
         d[i] = sc.nextInt() - 1;
     }
-    int ans =0;
+    int ans =0
     // ビット全探索:　k人がそれぞれcかdのボールを選ぶ組合せ
     for(int i = 0; i < Math.pow(2, k); i++) {
         boolean[] dish = new boolean[n];
