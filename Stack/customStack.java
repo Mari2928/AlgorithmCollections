@@ -6,7 +6,7 @@
 import java.util.Stack;
 import java.util.*;
 
-public class Test2 {
+public class customStack {
 
     // let each element have max value in the moment
     class StackElement {
@@ -33,7 +33,7 @@ public class Test2 {
     }
 
     public static void main(String[] args) {
-        Test2 test = new Test2();
+        customStack test = new customStack();
         test.push(1);
         test.push(5);
         test.push(3);
