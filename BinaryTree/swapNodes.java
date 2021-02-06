@@ -25,7 +25,7 @@ static int[][] swapNodes(int[][] indexes, int[] queries) {
             result[i][j] = bag.get(j);
         }            
     }
-    return  result;
+    return  result; 
 }
 
 /*
