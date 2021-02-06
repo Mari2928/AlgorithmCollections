@@ -1,5 +1,5 @@
 /*
-    Check if the tree is BST: 
+    Check if the tree is BST:  
 */
 
 boolean checkBST(Node root) {
