@@ -32,6 +32,18 @@ public class BT {
         preOrder(root.left);
         preOrder(root.right);
     }
+    
+    /* Binary search */
+    static Node binarySearch(Node root, int x) {
+        if(root == null)	return null;
+        Node cur = root;
+        while(cur != null) {
+            if(x == cur.data)		return cur;
+            else if(x < cur.data)	cur = cur.left;
+            else					cur = cur.right;
+        }
+        return null;
+    }
 
     /* BFS for tree */
     static Node BFS(Node root, int x) {
