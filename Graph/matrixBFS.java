@@ -25,7 +25,9 @@ public class Solution {
         for(int j = 0; j < q; j++){
             int n = sc.nextInt();
             int m = sc.nextInt();
-            int[][] g = new int[n+1][n+1]; // create a graph
+            
+            // create a graph
+            int[][] g = new int[n+1][n+1]; 
             for(int i = 0; i < m; i++){
                 int u = sc.nextInt();
                 int v = sc.nextInt();
@@ -33,7 +35,11 @@ public class Solution {
                 g[v][u] = 1;
             }
             int start = sc.nextInt();
-            int[] distances = BFS(start, g, n);           
+            
+            // get the distances from start node
+            int[] distances = BFS(start, g, n);
+            
+            // print the result
             for(int i = 1; i < distances.length; i++){
                 if(i == start)  continue;   // skip start node
                 int d = distances[i];
