@@ -32,25 +32,20 @@ public class Solution {
                 g[u][v] = 1;
                 g[v][u] = 1;
             }
-            int s = sc.nextInt();
-            ArrayList<Integer> distances = shortestDistFromS(s, n, g);
-            for(Integer val : distances)
-                System.out.print(val +" ");
+            int start = sc.nextInt();
+            int[] distances = BFS(start, g, n);           
+            for(int i = 1; i < distances.length; i++){
+                if(i == start)  continue;   // skip start node
+                int d = distances[i];
+                if(d == Integer.MAX_VALUE || d == 0) d = -1;
+                System.out.print(d +" ");
+            }                
             System.out.println();
         }        
     }
-    /* Get a list of shortest distances from start to each node */
-    static ArrayList<Integer> shortestDistFromS(int start, int n, int[][] g){
-        ArrayList<Integer> distances = new ArrayList<>();
-        for(int goal = 1; goal <= n; goal++){
-            if(goal != start)
-                distances.add(BFS(start, goal, g, n));  
-        }    
-        return distances;    
-    }
     
-    /* BFS to get a shortest distance from start to goal */
-    static int BFS(int start, int goal, int[][] g, int n){
+    /* BFS to get a shortest distance from start node to each node */
+    static int[] BFS(int start, int[][] g, int n){
         boolean[] visited = new boolean[n+1];
         int[] dist = new int[n+1];
         Arrays.fill(dist, Integer.MAX_VALUE);
@@ -59,19 +54,18 @@ public class Solution {
         q.add(start);
         visited[start] = true;
         dist[start] = 0;
+        
         while(!q.isEmpty()){
             int t = q.peek();            
-            if(t == goal && t != start) 
-                return dist[goal];
             for(int i = 1; i < g.length; i++){
                 if(g[t][i]==1 && !visited[i]){
                     q.add(i);
                     visited[i] = true;
-                    dist[i] = dist[t]+6;    // update distance
+                    dist[i] = dist[t]+6;
                 }
             }
             q.remove();
         }
-        return -1;
+        return dist;
     }
 }
