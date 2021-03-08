@@ -21,7 +21,7 @@ public class MinimalBST {
         if(start > end)	return null;
         int mid = (start + end) / 2;
         Node n = new Node(arr[mid]);
-        n.left = createMinimalBST(arr, 0, mid-1);
+        n.left = createMinimalBST(arr, start, mid-1);
         n.right = createMinimalBST(arr, mid+1, end);
         return n;
     }
