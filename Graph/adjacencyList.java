@@ -23,7 +23,7 @@ static long roadsAndLibraries(int n, int c_lib, int c_road, int[][] cities){
 }
 
 /*
-    DFS for adjacency list
+    隣接リストのDFS
 */
 static void DFS(Integer root, ArrayList<Integer>[] g){
     visited[root] = true;
@@ -38,8 +38,34 @@ static void DFS(Integer root, ArrayList<Integer>[] g){
     }
 }
 
+/*
+隣接リストのBFS: rootから各ノードまでの最短距離をdistに保存
+*/
+static int[] BFS(ArrayList<Integer>[] g, int root, int n) {
+    Queue<Integer> q = new ArrayDeque<>();
+    boolean[] visited = new boolean[n+1];
+    int[] dist = new int[n+1];
+
+    q.add(root);
+    visited[root] = true;
+    dist[root] = 0;
+
+    while(!q.isEmpty()) {
+        int t = q.peek();
+        for(Integer adjNode: g[t]) { // tの隣接ノードをキューに追加
+            if(!visited[adjNode]) {
+                q.add(adjNode);
+                visited[adjNode] = true;
+                dist[adjNode] += dist[t] + 1;
+            }   				
+        }
+        q.remove(t);
+    }
+    return dist;
+}
+
 /* 
-    Create adjacency list
+    Create adjacency list (無向グラフ)
 */
 static ArrayList<Integer>[] createGraph(int n, int[][] cities){
     // initialize array and each ArrayList
