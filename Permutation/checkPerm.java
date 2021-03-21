@@ -1,5 +1,5 @@
 /*
- * 文字列がpermutationか、文字カウントで判定  O(N)
+ * 文字列がpermutationか、文字カウントで判定  O(N) -> CCI P.193
  */
 static boolean checkPerm2(String s, String t) {
     if(s.length() != t.length())	return false;
