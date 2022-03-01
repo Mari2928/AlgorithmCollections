@@ -153,3 +153,13 @@ print('classes: %s' % np.unique(y_pred))
 print('accuracy: %.2f' % my_accuracy(y_test, y_pred))
 print('my precision: %s' % my_precision(y_test, y_pred))
 print('my recall: %s' % my_recall(y_test, y_pred))
+
+
+
+
+# with libraries
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+
+print(confusion_matrix(y_test, y_pred))
+print(accuracy_score(y_test, y_pred))
