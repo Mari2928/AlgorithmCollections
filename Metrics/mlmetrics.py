@@ -163,3 +163,61 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 print(confusion_matrix(y_test, y_pred))
 print(accuracy_score(y_test, y_pred))
+
+#########################################################
+# linear regression loss
+
+def h_lin(X, theta):
+    # X: data vector, theta: params
+    return theta[0] + X * theta[1:]
+
+def loss_L2(y_pred, y_test):
+    # least squares loss
+    return np.mean([(a-b)**2 for a,b in zip(y_pred.flatten(), y_test)])
+
+y_pred = h_lin(X_test, [150, 958])
+loss_L2(y_pred, y_test))
+
+def gradient_batch(theta, X, y):    
+    'Calculate the gradients of the loss function for the parameters in theta'
+    'Given data X and target y'
+    
+    grad = [0,0]
+    
+    h = h_lin(X,theta)
+    residuals = [ (a-b) for a,b in zip(h.flatten(), y)]
+    
+    grad[0] = np.mean(residuals)
+    grad[1] = X[:,0].dot(residuals)/len(y) # calculate the mean
+    
+    return np.array(grad)
+
+
+# set initial theta values
+theta = [100, 100]
+
+# set stopping criterion
+loss_stop_threshold = 0.1
+
+# learning rate
+alpha = 0.1
+
+def batch_gd( X, y, theta, alpha, loss_stop_threshold):
+    # initial loss value
+    loss = loss_L2( h_lin(X,theta), y)
+    old_loss = loss+loss_stop_threshold
+    
+    # loop through
+    while( abs(old_loss - loss) > loss_stop_threshold ):
+        #print(loss)
+        # gradient descent update rules
+        gradients = gradient_batch(theta, X, y)
+        theta = theta - alpha * gradients
+        # update loss values
+        old_loss = loss
+        loss = loss_L2( h_lin(X,theta), y)
+    print('GD stopped at loss %s, with coefficients: %s' % (loss,theta))
+    return theta
+
+theta = batch_gd(X_train, y_train, theta, alpha, loss_stop_threshold)
+
